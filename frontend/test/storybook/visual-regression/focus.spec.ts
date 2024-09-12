@@ -20,6 +20,7 @@ test.describe("Focus", () => {
     test(`focus-${slug}`, async ({ page }) => {
       await goTo(page, slug)
       await page.focus('[data-testid="focus-target"]')
+
       await expectSnapshot(`focus-${slug}`, page.locator(".screenshot-area"))
     })
   }

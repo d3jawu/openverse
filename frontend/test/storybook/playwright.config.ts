@@ -13,10 +13,4 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   timeout: 60 * 1e3, // 1 minute
-  expect: {
-    toMatchSnapshot: {
-      // To avoid flaky tests, we allow a small amount of pixel difference.
-      maxDiffPixelRatio: 0.01,
-    },
-  },
 })
