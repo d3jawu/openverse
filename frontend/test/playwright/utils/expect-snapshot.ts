@@ -74,7 +74,7 @@ export const expectSnapshot: ExpectSnapshot = async (
   page,
   name,
   screenshotAble,
-  { screenshotOptions, snapshotOptions, useColorMode, dir } = {}
+  { screenshotOptions, snapshotOptions, useColorMode = true, dir } = {}
 ) => {
   // Hide the theme switcher before taking the screenshot.
   screenshotOptions = {
@@ -88,7 +88,7 @@ export const expectSnapshot: ExpectSnapshot = async (
     .soft(await screenshotAble.screenshot(screenshotOptions))
     .toMatchSnapshot(getSnapshotName(name, "light"), snapshotOptions)
 
-  if (!(useColorMode === true)) {
+  if (!useColorMode) {
     return
   }
   await turnOnDarkMode(page, dir ?? "ltr")

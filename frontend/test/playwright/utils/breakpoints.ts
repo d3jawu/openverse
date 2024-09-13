@@ -91,6 +91,8 @@ const makeBreakpointDescribe =
         options = {}
       ) => {
         const snapshotName = getSnapshotName(name, options.dir)
+        // TODO: Remove after the Playwright VR dark mode snapshots are added
+        options.useColorMode = false
         return innerExpectSnapshot(page, snapshotName, screenshotAble, options)
       }
 
