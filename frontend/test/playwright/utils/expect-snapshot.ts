@@ -2,6 +2,8 @@ import { expect } from "@playwright/test"
 
 import { type LanguageDirection, t } from "~~/test/playwright/utils/i18n"
 
+import { sleep } from "~~/test/playwright/utils/navigation"
+
 import type { Breakpoint } from "~/constants/screens"
 
 import type {
@@ -92,6 +94,7 @@ export const expectSnapshot: ExpectSnapshot = async (
     return
   }
   await turnOnDarkMode(page, dir ?? "ltr")
+  await sleep(200)
 
   expect(await screenshotAble.screenshot(screenshotOptions)).toMatchSnapshot(
     getSnapshotName(name, "dark"),
